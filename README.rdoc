@@ -38,8 +38,8 @@ Simplest case:
     sortable
 
     def index
-		  User.find( :all, :order => @order ) # @order is set up by sort_it_out
-       ...
+      User.find( :all, :order => @order ) # @order is set up by sort_it_out
+      ...
     end
   end
 
@@ -53,7 +53,7 @@ More complex case:
     sortable :default => :name, :map => { :name => [:name_last, :name_first, :name_middle] }
 
     def index
-			User.find( :all, :order => @order ) # @order is set up by sort_it_out
+      User.find( :all, :order => @order ) # @order is set up by sort_it_out
       ...
     end
   end
