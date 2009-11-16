@@ -30,7 +30,13 @@ module SortItOut
       def resolve_order_clause( order, dir="ASC" )
         translated = self.options[:map][order.to_sym] unless self.options[:map].nil?
         order = translated unless translated.nil?
-        return order.is_a?( Array ) ? order.map { |field| "#{field} #{dir}" }.join( ", " ) : "#{order} #{dir}"
+        if order.is_a?( Array )
+          return order.map { |field| "#{field} #{dir}" }.join( ", " )
+        elsif order.is_a?( String ) && (order.include?( "," ) || order.include?( "ASC") || order.include?( "DESC" ))
+          return order
+        else order.is_a?( Symbol )
+          return "#{order.to_s} #{dir}"
+        end
       end
     end
      
