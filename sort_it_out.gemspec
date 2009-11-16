@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sort_it_out}
-  s.version = "1.0.0"
+  s.version = "0.9.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jason Harrelson"]
@@ -19,11 +19,15 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     "Histroy.txt",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
      "VERSION",
      "lib/sort_it_out.rb",
+     "lib/sort_it_out/sortable.rb",
+     "script/console",
+     "sort_it_out.gemspec",
      "spec/sort_it_out_spec.rb",
      "spec/spec_helper.rb"
   ]
