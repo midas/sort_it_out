@@ -1,6 +1,6 @@
 module SortItOut
   module Sortable
-   
+
     def self.included( base )
       base.extend( ActMethods )
     end
@@ -20,7 +20,15 @@ module SortItOut
     module InstanceMethods
       def resolve_sort
         order = params[:order]
-        order = params[:order] = self.options[:default] unless order
+        unless order
+          if self.options[:default].is_a?( String ) || self.options[:default].is_a?( Symbol )
+            order = params[:order] = self.options[:default]
+          elsif self.options[:default].is_a?( Hash )
+            order = params[:order] = self.options[:default][:attribute]
+            params[:direction] = self.options[:default][:direction]
+          end
+        end
+
         params[:direction] = 'ASC' unless params[:direction]
         @order = order.nil? ? "" : resolve_order_clause( order, params[:direction] )
       end
@@ -39,6 +47,6 @@ module SortItOut
         end
       end
     end
-     
+
   end
 end
