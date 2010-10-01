@@ -1,3 +1,8 @@
+= 1.0.0 2010-09-30
+
+* Add default sort direction specification.
+
+
 = 0.9.2 2009-11-15
 
 * Added ability yo specify default sort as a string that is a SQL fragment.
