@@ -10,7 +10,7 @@ module SortItOut
         unless included_modules.include? InstanceMethods
           include InstanceMethods
           before_filter :resolve_sort
-          class_inheritable_accessor :options
+          class_attribute :options
         end
 
         self.options = options
