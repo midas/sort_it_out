@@ -1,10 +1,12 @@
-$:.unshift(File.dirname(__FILE__)) unless
-  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
-
-require 'sort_it_out/sortable.rb'
+require "sort_it_out/version"
+require 'sort_it_out/railtie' if /3\.\d+\.\d+.*/.match( Rails.version )
 
 module SortItOut
-  VERSION = '1.0.0'
+
+  autoload :Sortable, 'sort_it_out/sortable'
+
 end
 
-ActionController::Base.send( :include, SortItOut::Sortable ) if defined?( ActionController::Base )
+if /2\.\d+\.\d+.*/.match( Rails.version )
+  ActionController::Base.send( :include, SortItOut::Sortable ) if defined?( ActionController::Base )
+end

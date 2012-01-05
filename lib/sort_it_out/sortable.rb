@@ -1,4 +1,5 @@
 module SortItOut
+
   module Sortable
 
     def self.included( base )
@@ -6,6 +7,7 @@ module SortItOut
     end
 
     module ActMethods
+
       def sortable( options={} )
         unless included_modules.include? InstanceMethods
           include InstanceMethods
@@ -15,9 +17,11 @@ module SortItOut
 
         self.options = options
       end
+
     end
 
     module InstanceMethods
+
       def resolve_sort
         order = params[:order]
         unless order
@@ -33,7 +37,7 @@ module SortItOut
         @order = order.nil? ? "" : resolve_order_clause( order, params[:direction] )
       end
 
-      protected
+    protected
 
       def resolve_order_clause( order, dir="ASC" )
         translated = self.options[:map][order.to_sym] unless self.options[:map].nil?
@@ -46,7 +50,9 @@ module SortItOut
           return "#{order.to_s} #{dir}"
         end
       end
+
     end
 
   end
+
 end
