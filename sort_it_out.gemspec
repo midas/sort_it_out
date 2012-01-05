@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     rb-fsevent
     growl
     guard-rspec
+    rake
   ).each do |development_dependency|
     s.add_development_dependency development_dependency
   end
